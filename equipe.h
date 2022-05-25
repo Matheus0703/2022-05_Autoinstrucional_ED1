@@ -1,6 +1,13 @@
-typedef struct equipe;
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void cadastramento_Equipe();
+void exibir_Equipe();
+void excluir_Equipe();
+void editar_Equipe();
 
-struct equipe {
+
+struct Equipe {
 	char nome[51];
 	char nacionalidade[21]; // Quantidade de membros
 	int qtddMembros; 
@@ -24,69 +31,146 @@ struct equipe {
 	char tecnicoCombustivel[21]; // Tï¿½cnico de combustï¿½vel
 	char mecanicosPitStop[21][21]; //Mecï¿½nicos do pitstop (atï¿½ 21 profissionais)
 	
+};
+
+// Funções:
+	/* Cadastramento da Equipe: */
+		
+			
+void cadastramento_Equipe(){
+           // Definindo a estrutura a ser utilizada e seu apelido:
+				struct Equipe p;
+				
+			// Limpando o buffer do teclado:
+			    fflush(stdin);
+				
+			// Impressão de qual tarefa será realizada:
+			printf("\n\t\t ======================== CADASTRAMENTO DE EQUIPES ========================\n");      
+            
+			printf("\n\t\tNome: ");
+			fgets(p.nome, 51 , stdin);
+			
+			printf("\n\t\tNacionalidade: ");
+            fgets(p.nacionalidade, 21, stdin);
+
+            printf("\n\t\tQuantidade de membros: ");
+            scanf("%i", &p.qtddTitulosConstrutores);
+
+            printf("\n\t\tQuantidade de titulos contrutores: ");
+            scanf("%i", &p.qtddTitulosCondutores);
+
+            printf("\n\t\tPoli positions: ");
+            scanf("%i", &p.poliPositions);
+
+            printf("\n\t\tQuantidade de voltas mais rapidas: ");
+            scanf("%i", &p.qtddVoltasMaisRap);
+
+            printf("\n\t\tValor do mercado: ");
+            scanf("%f", &p.valorMercado);
+
+            printf("\n\t\tValor da taxa de inscrição: ");
+            scanf("%f", &p.taxaIncricaoTemp);
+
+            printf("\n\t\tCores de equipe : ");
+            fgets(p.coresEquipe, 31 , stdin);
+
+            printf("\n\t\tChefe de equipe: ");
+            fgets(p.chefeEquipe, 21, stdin);
+			
+			printf("\n\t\tDiretor Comercial: ");
+			fgets(p.diretorComercial, 21, stdin);
+			
+			printf("\n\t\tDiretor Tecnico: ");
+			fgets(p.diretorTecnico, 21, stdin);
+			
+			printf("\n\t\tChefe dinamico: ");
+			fgets(p.aeroDinamicChefe, 21, stdin);
+			
+			printf("\n\t\tProjetista Chefe: ");
+			fgets(p.projetistaChefe, 21, stdin);
+			
+			printf("\n\t\tChefe de Pesquisa e Desenvolvimento: ");
+			fgets(p.ChefePesqEhDev, 21, stdin);
+			
+			printf("\n\t\tChefe Mecanico: ");
+			fgets(p.ChefeMecanico, 21, stdin);
+			
+			printf("\n\t\tTecnico de Pneus: ");
+			fgets(p.tecnicoPneus, 21, stdin);
+			
+			printf("\n\t\tTecnicos de Componentes: ");
+			fgets(p.tecnicoComponentes, 21, stdin);
+			
+			printf("\n\t\tTecnico de Transmissao: ");
+			fgets(p.tecnicoTransmissao, 21, stdin);
+			
+			printf("\n\t\tTecnico de Combustiveis: ");
+			fgets(p.tecnicoCombustivel, 21, stdin);
+			
+			for(int i = 0; i<21; i++){
+			    printf("\n\t\tMecanico Pit Stop: ");
+				fgets(p.mecanicosPitStop[i], 21, stdin);
+			}
+  
 }
 
-printf("Nome: ");
-gets(nome);
+//Edição de dados
 
-printf("Nacionalidade: ");
-gets(nacionalidade);
+void exibir_Equipe(void) {
+	// Definindo a estrutura a ser utilizada e seu apelido:
+	  struct piloto p;
+			
+			
+	// Limpando o buffer do teclado:
+	  fflush(stdin);
+            
+			printf("\n\t\tNome: %s", &p.nome);
+			
+			printf("\n\t\tNacionalidade: %s", &p.nacionalidade);
+        
+            printf("\n\t\tQuantidade de membros: %s ", &p.qtddTitulosConstrutores);
+           
+            printf("\n\t\tQuantidade de titulos contrutores: %s", &p.qtddTitulosCondutores);
+        
+            printf("\n\t\tPoli positions: %i ", &p.poliPositions);
+ 
+            printf("\n\t\tQuantidade de voltas mais rapidas: %i", &p.qtddVoltasMaisRap);
 
-printf("Quantidade de membros: ");
-scanf("%i", &qtddTitulosConstrutores);
+            printf("\n\t\tValor do mercado: %f", &p.valorMercado);
 
-printf("Quantidade de titulos contrutores: ");
-scanf("%i", &Dados.qtddTitulosCondutores);
+            printf("\n\t\tValor da taxa de inscrição: %f", &p.taxaIncricaoTemp);
 
-printf("Poli positions: ");
-scanf("%i", &poliPositions);
+            printf("\n\t\tCores de equipe : %s ", &p.coresEquipe);
 
-printf("Quantidade de voltas mais rapidas: ");
-scanf("%i", &qtddVoltasMaisRap);
+            printf("\n\t\tChefe de equipe: %s ", &p.chefeEquipe);
 
-printf("Valor do mercado: ");
-scanf("%f", &valorMercado);
+			printf("\n\t\tDiretor Comercial: %s", &p.diretorComercial);
 
-printf("Valor da taxa de inscrição: ");
-scanf("%f", &taxaIncricaoTemp);
+			printf("\n\t\tDiretor Tecnico: %s", &p.diretorTecnico);
 
-printf("Cores de equipe : ");
-gets(coresEquipe);
+			printf("\n\t\tChefe dinamico: %s ", &p.aeroDinamicChefe);
 
-printf("Chefe de equipe: ");
-gets(chefeEquipe);
+			printf("\n\t\tProjetista Chefe: %s", &p.projetistaChefe);
 
-printf("Diretor Comercial: ");
-gets(diretorComercial);
+			printf("\n\t\tChefe de Pesquisa e Desenvolvimento: %s ", &p.ChefePesqEhDev);
 
-printf("Diretor Tecnico: ");
-gets(diretorTecnico);
+			printf("\n\t\tChefe Mecanico: %s ", &p.ChefeMecanico);
 
-printf("Chefe dinamico: ");
-gets(aeroDinamicChefe);
+			printf("\n\t\tTecnico de Pneus: %s ", &p.tecnicoPneus);
 
-printf("Projetista Chefe: ");
-gets(projetistaChefe);
+			printf("\n\t\tTecnicos de Componentes: %s ", &p.tecnicoComponentes);
 
-printf("Chefe de Pesquisa e Desenvolvimento: ");
-gets(ChefePesqEhDev);
+			printf("\n\t\tTecnico de Transmissao: %s ", &p.tecnicoTransmissao);
 
-printf("Chefe Mecanico: ");
-gets(ChefeMecanico);
+			printf("\n\t\tTecnico de Combustiveis: %s ", &p.tecnicoCombustivel);
+			
+			for(int i = 0; i<21; i++){
+			   printf("\n\t\tMecanico Pit Stop: %s ", &p.mecanicosPitStop[i]);
+			}
+}
 
-printf("Tecnico de Pneus: ");
-gets(tecnicoPneus);
-
-printf("Tecnicos de Componentes: ");
-gets(tecnicoComponentes);
-
-printf("Tecnico de Transmissao: ");
-gets(tecnicoTransmissao);
-
-printf("Tecnico de Combustiveis: ");
-gets(tecnicoCombustivel);
-
-for(int i = 0; i<21; i++){
-printf("Mecanico Pit Stop: ");
-gets(mecanicosPitStop[i]);
+void sair_equipe() {
+	printf("\n\t\t Bye-bye :)");
+	//system("exit");
+	exit(0);
 }
