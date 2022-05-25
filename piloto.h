@@ -162,4 +162,131 @@ void EhCraque(){
 		}
 		
 	}
+
+// ---------------------------------------------- Nova edição ----------------------------------------------------------------------------//
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void cadastramento_piloto();
+
+
+// Variables:
+	FILE *ffilePointer;
+
+// Estrutura:
+	struct piloto {
+	    char nome[50];
+	    char nacionalidade[30];
+	    char corPele[30];
+	    char corOlhos[30];
+	    char corCabelo[30];
+	    long altura;
+	    int peso;
+	    int idade;
+	    int qtdCampeonatosGanhos;
+	    int polePosition;				// PosiÃ§Ã£o de iniciaÃ§Ã£o na corrida.
+	    int qtdVoltasRap;      			// Quantidade de voltas mais rÃ¡pidas
+
+	};
+	
+
+	/* Cadastramento do Piloto:
+	==========================================================================================================*/
+		void cadastramento_piloto() {
+			// Definindo a estrutura a ser utilizada e seu apelido:
+				struct piloto p;
+			
+			
+			// Limpando o buffer do teclado:
+				fflush(stdin);
+				
+				
+				printf("\n\t\t ======================== CADASTRAMENTO DE PILOTOS ========================\n");
+			
+			// Inserção
+				// Nome:
+					printf("\t\t Insira o nome do piloto: ");
+					fgets(p.nome, 50, stdin);
+					
+				// Nacionalidade:
+					printf("\t\t Insira a nacionalidade do piloto: ");
+					fgets(p.nacionalidade, 30, stdin);
+					
+				// Cor de Pele:
+					printf("\t\t Insira a cor de pele do piloto: ");
+					fgets(p.corPele, 30, stdin);
+					
+				// Cor dos Olhos:
+					printf("\t\t Insira a cor dos olhos do piloto: ");
+					fgets(p.corOlhos, 30, stdin);
+					
+				// Cor do Cabelo:
+					printf("\t\t Insira a cor do cabelo do piloto: ");
+					fgets(p.corCabelo, 30, stdin);
+					
+				// Altura:
+					printf("\t\t Insira a altura do piloto: ");
+					scanf("%i", &p.altura);
+					
+				// Peso:
+					printf("\t\t Insira o peso do piloto: ");
+					scanf("%i", &p.peso);
+					
+				// Idade:
+					printf("\t\t Insira a idade do piloto: ");
+					scanf("%i", &p.idade);
+					
+				// Qtd de Campeonatos Ganhos:
+					printf("\t\t Insira a quantidade de campeonatos ganhos pelo piloto: ");
+					scanf("%i", &p.qtdCampeonatosGanhos);
+					
+				// Pole Position:
+					printf("\t\t Insira a posição de largada do piloto: ");
+					scanf("%i", &p.polePosition);
+					
+				// Qtd de Voltas Mais Rapidas:
+					printf("\t\t Insira a quantidade de voltas mais rÃ¡pidas feitas pelo piloto: ");
+					scanf("%i", &p.qtdVoltasRap);
+					
+		}
+	
+	// Edicao do Piloto:
 		
+	
+	// Exclusao do Piloto:
+		
+	
+	// Impressao do Piloto:
+	void exibir_pilotos(void) {
+	struct piloto p;
+
+     fflush(stdin); //Limpar Buffer do Teclado
+            
+				printf("\n\t\tNome do piloto: %s", &p.nome);					
+				
+				printf("\n\t\tNacionalidade do piloto: %s ", &p.nacionalidade);
+				
+				printf("\n\t\tCor de pele do piloto: %s", &p.corPele);
+									
+				printf("\n\t\tCor dos olhos do piloto: %d", &p.corOlhos);
+								
+				printf("\n\t\tCor do cabelo do piloto: %s", &p.corCabelo);
+			
+				printf("\n\t\tAltura do piloto: %s ", &p.altura);
+
+				printf("\n\t\tPeso do piloto: &i ", &p.peso);
+
+				printf("\n\t\tIdade do piloto: &i ", &p.idade);
+
+				printf("\n\t\tQuantidade de campeonatos ganhos pelo piloto: %i ", &p.qtdCampeonatosGanhos);
+					
+				printf("\n\t\tPosição de largada do piloto: %i ", &p.polePosition);
+					
+				printf("\n\t\tQuantidade de voltas mais rapidas feitas pelo piloto: %i ", &p.qtdVoltasRap);
+}
+
+void sair_piloto() {
+	printf("\n\t\t Bye-bye :)");
+	//system("exit");
+	exit(0);
+}
