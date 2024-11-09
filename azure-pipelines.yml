@@ -1,19 +1,61 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+  - main # Define o branch para acionar o pipeline (mude conforme necessário)
+
+pr:
+  - main # Defina o branch para acionar o pipeline de pull request
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest' # Usando a imagem de Ubuntu mais recente para o agente de build
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  buildConfiguration: 'Release'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: Build
+  displayName: 'Build and Test'
+  steps:
+  
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '6.x' # Versão do SDK do .NET (ajuste conforme sua necessidade)
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+    
+    - task: Checkout@1
+      displayName: 'Checkout source code'
+    
+    - task: Restore@1
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj' # Para projetos .NET, ajuste conforme seu tipo de projeto
+    
+    - task: Build@1
+      inputs:
+        solution: '**/*.sln'
+        configuration: $(buildConfiguration)
+    
+    - task: Test@2
+      inputs:
+        testAssembly: '**/*Test*.dll' # Localização dos testes (ajuste conforme seu projeto)
+    
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFiles: '**/test-*.xml'
+        testRunTitle: 'Unit Tests'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'drop'
+        publishLocation: 'Container'
+
+- job: Deploy
+  displayName: 'Deploy to Environment'
+  dependsOn: Build
+  condition: succeeded()
+  steps:
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: '<Your-Azure-Subscription>'
+        appName: '<Your-App-Service-Name>'
+        package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
